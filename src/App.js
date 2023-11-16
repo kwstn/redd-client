@@ -6,7 +6,7 @@ function App() {
   const [subreddit, setSubreddit] = useState('gooners');
 
   useEffect(() => {
-    fetch("https://www.reddit.com/r/Gunners.json").then(res => {
+    fetch("https://www.reddit.com/r/"+ subreddit +".json").then(res => {
       if (res.status != 200)  {
         console.log("ERROR");
         return
@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <input type="text" className="input" value="gooners"></input>
+        <input type="text" className="input" value={subreddit} onChange={e => setSubreddit(e.target.value)} />
       </header>
       <div className="articles">
         {
